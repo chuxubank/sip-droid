@@ -22,6 +22,10 @@ shadowJar {
 group = 'top.chuxubank.circulation'
 version = '1.0'
 
+artifacts {
+    shadowJar
+}
+
 publishing {
     publications {
         shadow(MavenPublication) { publication ->
