@@ -15,16 +15,11 @@ dependencies {
 }
 
 shadowJar {
-    archiveBaseName.set(rootProject.name)
     relocate "java.beans", "com.googlecode.openbeans"
 }
 
 group = 'top.chuxubank.circulation'
 version = '1.0'
-
-artifacts {
-    shadowJar
-}
 
 publishing {
     publications {
