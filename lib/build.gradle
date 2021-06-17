@@ -1,0 +1,19 @@
+plugins {
+    id 'com.github.johnrengelman.shadow' version '7.0.0'
+    id 'java'
+}
+
+repositories {
+    // Use Maven Central for resolving dependencies.
+    mavenCentral()
+}
+
+dependencies {
+    implementation "com.ceridwen.circulation:ceridwen-standard-interchange-protocol-library:2.9.7"
+    implementation "me.champeau.openbeans:openbeans:1.0.2"
+}
+
+shadowJar {
+    archiveBaseName.set(rootProject.name)
+    relocate "java.beans", "com.googlecode.openbeans"
+}
