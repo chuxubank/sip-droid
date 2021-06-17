@@ -1,6 +1,7 @@
 plugins {
     id 'com.github.johnrengelman.shadow' version '7.0.0'
     id 'java'
+    id 'maven-publish'
 }
 
 repositories {
@@ -16,4 +17,16 @@ dependencies {
 shadowJar {
     archiveBaseName.set(rootProject.name)
     relocate "java.beans", "com.googlecode.openbeans"
+}
+
+group = 'top.chuxubank.circulation'
+version = '1.0'
+
+publishing {
+    publications {
+        shadow(MavenPublication) { publication ->
+            artifactId rootProject.name
+            project.shadow.component(publication)
+        }
+    }
 }
