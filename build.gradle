@@ -15,6 +15,10 @@ dependencies {
 }
 
 shadowJar {
+    dependencies {
+        exclude(dependency("junit:junit"))
+        exclude(dependency("org.hamcrest:hamcrest-core"))
+    }
     relocate "java.beans", "com.googlecode.openbeans"
 }
 
@@ -24,7 +28,6 @@ version = '1.0'
 publishing {
     publications {
         shadow(MavenPublication) { publication ->
-            artifactId rootProject.name
             project.shadow.component(publication)
         }
     }
