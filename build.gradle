@@ -4,8 +4,10 @@ plugins {
     id 'maven-publish'
 }
 
+group = "com.github.chuxubank"
+version = "1.1"
+
 repositories {
-    // Use Maven Central for resolving dependencies.
     mavenCentral()
 }
 
@@ -15,15 +17,13 @@ dependencies {
 }
 
 shadowJar {
+    archiveClassifier.set("")
     dependencies {
         exclude(dependency("junit:junit"))
         exclude(dependency("org.hamcrest:hamcrest-core"))
     }
     relocate "java.beans", "com.googlecode.openbeans"
 }
-
-group = 'top.chuxubank.circulation'
-version = '1.0'
 
 publishing {
     publications {
