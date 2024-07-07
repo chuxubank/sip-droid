@@ -1,11 +1,11 @@
 plugins {
-    id 'com.github.johnrengelman.shadow' version '7.0.0'
+    id 'com.github.johnrengelman.shadow' version '8.1.1'
     id 'java'
     id 'maven-publish'
 }
 
 group = "com.github.chuxubank"
-version = "1.1"
+version = "1.2"
 
 repositories {
     mavenCentral()
@@ -17,11 +17,7 @@ dependencies {
 }
 
 shadowJar {
-    archiveClassifier.set("")
-    dependencies {
-        exclude(dependency("junit:junit"))
-        exclude(dependency("org.hamcrest:hamcrest-core"))
-    }
+    configurations = [project.configurations.compileClasspath]
     relocate "java.beans", "com.googlecode.openbeans"
 }
 
