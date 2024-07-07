@@ -5,7 +5,7 @@ plugins {
 }
 
 group = "com.github.chuxubank"
-version = "1.2"
+version = "1.3"
 
 repositories {
     mavenCentral()
@@ -18,6 +18,14 @@ dependencies {
 
 shadowJar {
     configurations = [project.configurations.compileClasspath]
+    dependencies {
+        exclude(dependency("junit:junit"))
+        exclude(dependency("org.hamcrest:hamcrest-core"))
+        exclude(dependency("commons-net:commons-net"))
+        exclude(dependency {
+            it.moduleGroup == 'io.netty'
+        })
+    }
     relocate "java.beans", "com.googlecode.openbeans"
 }
 
